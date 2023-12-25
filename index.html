@@ -1,175 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
-    <title>Sidebar template</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" type="text/css" />
- <link rel="stylesheet" href="style.css">
-</head>
+<html>
+    <head>
+        <script src="index.js"></script>
 
-<body>
-<div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
-      <div class="sidebar-brand">
-        <a href="#">Clobber</a>
-        <div id="close-sidebar">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="sidebar-menu">
-        <ul>
-          <li class="sidebar-dropdown">
-            <a href="#">
-			  <i class="fa fa-search"></i>
-              <span>Queries</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-wrench"></i>
-              <span>Utilities</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Products
 
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!-- sidebar-menu  -->
-    </div>
-  </nav>
-  <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="container-fluid">
-      <h2>Mahe & Co</h2>
-      <hr>
-      <table id="example" class="display" style="width:100%">
-        <thead>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <input id="test1_interval" value="5" hidden>
+        <input id="test2_interval" value="2" hidden>
+        <table class="table">
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <td>MIC</td>
+                <td>OpenTIme</td>
+                <td>Time to open</td>
             </tr>
-        </thead>
-        <tbody>
             <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011-04-25</td>
-                <td>$320,800</td>
+                <td>XLON</td>
+                <td>08:00BST</td>
+                <td>
+                    <div id="test1"></div>
+                </td>
             </tr>
-        </tbody>
-    </table>
-      </div>
-    </div>
-  </main>
-  <!-- page-content" -->
-</div>
-<!-- page-wrapper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script> 
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>	
-</body>
-<script>
-jQuery(function ($) {
-
-    $(".sidebar-dropdown > a").click(function() {
-  $(".sidebar-submenu").slideUp(200);
-  if (
-    $(this)
-      .parent()
-      .hasClass("active")
-  ) {
-    $(".sidebar-dropdown").removeClass("active");
-    $(this)
-      .parent()
-      .removeClass("active");
-  } else {
-    $(".sidebar-dropdown").removeClass("active");
-    $(this)
-      .next(".sidebar-submenu")
-      .slideDown(200);
-    $(this)
-      .parent()
-      .addClass("active");
-  }
-});
-
-$("#close-sidebar").click(function() {
-  $(".page-wrapper").removeClass("toggled");
-});
-$("#show-sidebar").click(function() {
-  $(".page-wrapper").addClass("toggled");
-});
-});
-</script>
-<script>
-$(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#example thead th').each(function () {
-        var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-    });
- 
-    // DataTable
-    var table = $('#example').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api()
-                .columns()
-                .every(function () {
-                    var that = this;
- 
-                    $('input', this.header()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that.search(this.value).draw();
-                        }
-                    });
-                });
-        },
-    });
-});
-</script>
-
+            <tr>
+                <td>XJSE</td>
+                <td>08:00BST</td>
+                <td>
+                   <div id="test2"></div>
+                </td>
+            </tr>
+        </table>
+    </body>
 </html>
